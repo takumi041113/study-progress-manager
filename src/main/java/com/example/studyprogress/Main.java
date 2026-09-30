@@ -10,10 +10,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import com.example.studyprogress.controller.LoginController;
+
 // JavaFXアプリを起動するクラス
 public class Main extends Application {
 
     @Override 
+    // JavaFXアプリ起動時に、ログイン画面を生成して表示する
     public void start(Stage stage) {
         
         Label userLabel = new Label("ユーザー名");
@@ -23,6 +26,12 @@ public class Main extends Application {
         PasswordField passwordField = new PasswordField();
 
         Button loginButton = new Button("ログイン");
+
+        LoginController loginController = new LoginController();
+        
+        loginButton.setOnAction(event -> {
+            loginController.login(userField,passwordField);
+        });
 
         VBox root = new VBox(
             10,
